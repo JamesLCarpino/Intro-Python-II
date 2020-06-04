@@ -74,7 +74,7 @@ time.sleep(1)
 
 movement = ''
 while movement != 'q': #input validation
-    movement = input('which direction would you like to go? Enter n, s, e, w: ')
+    movement = input('which direction would you like to go? Enter n, s, e, w to move onward you brave son of a bitch\n...or be a litle sheepish lap dog and quit by hitting q: ')
     if movement == 'n':
         if hasattr(player.current_room, 'n_to'):
             player.current_room = player.current_room.n_to
@@ -114,6 +114,10 @@ while movement != 'q': #input validation
     elif movement == 'q':
         time.sleep(1)
         print('\nYou tried, you failed, but you tried.\nThat counts for something you quitter...I guess...\nThe cave closes behind you and you wake back up in your bed.')
+        time.sleep(2)
+        print(f'...{player.name} is a loser with a skinny weiner')
+    else:
+        print('Hey dingus, thats not a valid direction')
 # Write a loop that:
 #
 # * Prints the current room name

@@ -1,4 +1,6 @@
 from room import Room
+from player import Player
+import time
 
 # Declare all the rooms
 
@@ -44,12 +46,74 @@ room['treasure'].s_to = room['narrow']
 
 
 #player object
-from player import Player
-        
+#making an intro
+def game_intro():
+    print('You fell asleep...\n')
+    time.sleep(1)
+    print('...You may not remember falling asleep, but you did.\n')
+    time.sleep(1)
+    print('This unfamliar grass is cool to the touch, but smells wrong. You rub your eyes and see that you don\'t recognize any of your surroundings.\n')# adjust this to be dynamic to the rooms dictionary
+    print('A voice on the wind asks you a question')
+    time.sleep(.5)
+    print('.')
+    time.sleep(.5)
+    print('..')
+    time.sleep(.7)
+    print('...')
 
+game_intro()    
 
+input_name = input('Hello, what is your name?: ')
+player = Player(input_name, room['outside'])
 
-    
+print(f'{input_name},')
+print(f"you are currently looking at the { player.current_room.name }...\n")
+time.sleep(1)
+print(f'looking around you take notice {player.current_room.description}')
+time.sleep(1)
+
+movement = ''
+while movement != 'q': #input validation
+    movement = input('which direction would you like to go? Enter n, s, e, w: ')
+    if movement == 'n':
+        if hasattr(player.current_room, 'n_to'):
+            player.current_room = player.current_room.n_to
+            print(f'You are now in the {player.current_room.name}...\n')
+            time.sleep(1)
+            print(f'You look around the {player.current_room.name} and take notice that {player.current_room.description} ')
+        else:
+            print('You can\'t go that direction, please choose another')
+            input('which direction would you like to go? Enter n, s, e, w to continue the journey, or q to shake yourself out of this fever dream: ')
+    elif movement == 's':   
+        if hasattr(player.current_room, 's_to'):
+            player.current_room = player.current_room.s_to
+            print(f'You are now in the {player.current_room.name}...\n')
+            time.sleep(1)
+            print(f'You look around the {player.current_room.name} and take notice that {player.current_room.description} ')
+        else:
+            print('You can\'t go that direction, please choose another')
+            input('which direction would you like to go? Enter n, s, e, w to continue the journey, or q to shake yourself out of this fever dream: ')    
+    elif movement == 'e':
+        if hasattr(player.current_room, 'e_to'):
+            player.current_room = player.current_room.e_to
+            print(f'You are now in the {player.current_room.name}...\n')
+            time.sleep(1)
+            print(f'You look around the {player.current_room.name} and take notice that {player.current_room.description} ') 
+        else:
+            print('You can\'t go that direction, please choose another')
+            input('which direction would you like to go? Enter n, s, e, w to continue the journey, or q to shake yourself out of this fever dream: ')
+    elif movement == 'w':
+        if hasattr(player.current_room, 'w_to'):
+            player.current_room = player.current_room.w_to
+            print(f'You are now in the {player.current_room.name}...\n')
+            time.sleep(1)
+            print(f'You look around the {player.current_room.name} and take notice that {player.current_room.description} ')
+        else:
+            print('You can\'t go that direction, please choose another')
+            input('which direction would you like to go? Enter n, s, e, w to continue the journey, or q to shake yourself out of this fever dream: ')
+    elif movement == 'q':
+        time.sleep(1)
+        print('\nYou tried, you failed, but you tried.\nThat counts for something you quitter...I guess...\nThe cave closes behind you and you wake back up in your bed.')
 # Write a loop that:
 #
 # * Prints the current room name

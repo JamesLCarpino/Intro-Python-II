@@ -7,7 +7,7 @@ class Player:
         self.current_room = current_room
     
     def __str__(self):
-        output = f'Hello weary adventurer! You are currently in {current_room}'
+        output = f'Hello {name}! You are currently in {current_room}'
     
     #getting the room names and returning a list of room instances -> similarly to departments v stores
    

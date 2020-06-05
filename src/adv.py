@@ -139,6 +139,9 @@ print(f"you are currently looking at the { player.current_room.name }...\n")
 time.sleep(1)
 print(f"looking around you take notice {player.current_room.description}")
 time.sleep(1)
+print(
+    f"Patting your pockets to see what you've got on you and your inventory is: {player.inventory}"
+)
 
 movement = ""
 
@@ -223,8 +226,12 @@ while movement != "q":  # input validation
         # print(f"...{player.name} is a loser with a skinny weiner")
     elif movement == "pick":
 
-        player.get_item(str(player.current_room.item[0]))
+        player.get_item(player.current_room.item[0])
         print(f"You picked up: {player.inventory}")
+    elif movement == "check":
+        player.current_items()
+        if player.current_items() == []:
+            print("you dont have any fucking gear you dingleberry!")
     else:
         print("Hey dingus, thats not a valid direction")
 # Write a loop that:
